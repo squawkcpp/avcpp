@@ -1,35 +1,21 @@
-sudo: required 
+sudo: required
 language: cpp
 services:
-  - docker
+- docker
 env:
   global:
-    - secure: "gDDhrr/Ibkx6ETuyRSJOBnhi3h9dogsNKcKMj7a9MoVgDmk19XdDVbUjNzxIMPRZ3vsCLZUTld6NZmsxg/CHWczD1ZDJa1oGhPpeJgxIYG0yjH2Th04Twl86FfXgWoPXWL6oo1rSJVOu6EjPubSaV4WHcL/SAvlRvlnBvBidZ/39yLhaqBjqhFHM80bpo4j7zvqMPlGzsrjFCJkrKl+TtwBroISohu5c7aypiX+mBbXtpraJE1rH9qTDd7Vwr1RAmRJ/emDNfbLKbyj7pV0RUQPp2wAgNNoSW/hIjGEJ8pFHFVfTADJr6wZ955VOSspMMoHG1DgxsbdUdX39GlBfbuO0sJeYszfbBkcVKs07H2XgyO6kFfxM3JeeA5DBX27bsk+IzZxely3xi4Dyhvf4LQmaHNuF/K7gs0nqFq7GTmBSBOdwFWa1EtznRlD+csZeLkjknMwpPmrKQLuquF08CcMRivrNJzlBQQnoy78Pthkyb9+wRCHaanInxlTFn6Bb2//ZuY1jbXAnWiLIhEUKG0+Da8gSfbKOzcbeeHt69hiWXFKUgR6OexdRB8xexw2gJ+SHuegZh+OUpyRs7NxEn4FDIe1ycv1pJvLJhR8g50OZM9/NAHpgGf83E/Fe5FmguCyBzkuKgyAvMjvgtFuI6Wibuor3DaqhqpL9hXMVI1M=" # DOCKER_USER
-    - secure: "YZsjKNCh4z3rfZ4kwbFDNJqE0txSnFde1oSmmb7a2dJpPC0HLZzGd5FasSxLL8v2wU2QKeHe6obDhbc8VVKqDSz6KtGs28EojfyYnAoLimEGtK5pdThNrb4AFtBqm3aVc8b0sZBgyFxV8mxlrDHlKjzuBrjIvrnCcXVJccypZch56ds7ibWZabXzCE/HXSgGz2Yf7KXhha1Hw2lbho/8haVnP4yrILV2fhRtC2T6MyamhrXlQVZSY6poFhZUT9fB4LPDVv2FuGlgokZ8U8U9Jk+xM691YRvJzHEt0y0OObpLCmO67wDN/S1cbQEu4hdDXoKgiVe0YLCj7kuEh1A4BgIZPGe1hRbEPx9aVpZEutSdKgVlVnj8KrtY3KKaIcmS+1zo6I3qtcapFTrsNFzBiawEOKOoRToojfAEY6IM6WgpCg3CbhOGuTjBF46z76nFkTzciMa88lJ8GIXKkuIE3rr58OVmwOdYIb0oYmSj0oAzx9rM7o2/ubvfai9HkjuKcCq2rcLaK4C24oLXGpT+h6uU1CV1KEEd8/grxYGypHY/zubAGy/tGOLyJB+kM/CAcgL3Y2x/ANgkQLejSXfnDCPcFh7M8eCg+8/NnEVPv8gWxA6HsDeR/nMC3GYeL+9HzMo1FmNO7hVAmO/jJg6zz1DmrVlBf2vuOSeMJx2Z2nI=" # DOCKER_PASS
-    - COMMIT=${TRAVIS_COMMIT::8}
+  - secure: "dsIO/tqbp14Byk/LBwuOzmWxwsstVRl/4NUqD+sSF3BMCyhE5qvzrzlM4t08LNhZJhmdJ5jWQ0GGr5Q6gJrJ0Jm3xAF2HCc8fm0P8nKmweamMzL/Yy8BvQpIKMYXnLRDvyDcxRLWE7NyoLCoJs1vRzs+gOw+de9gFiFD5EyL/ArG2SRJI266oqRGYQ9EnqekgZR/AUSPEtzY04N42CAS/s9tGj3vAmchQte0sATyQLuu+KaAVaL8SNsVA6Ep+iY4RuCKXDJUd0jMinO0klw9yf6jN8tQgm5KJ7/q4miTYAVJEfAGAOF9m5PlCtofxKU16UAQZy+IRNH5QuXIQs59CGmHlQpIwG/deZLciFLnY+S9mxu3IolAJsVd1gaNlesaszCmSj/8eZzmeWLO1JFoHZ90mCPfHFh2AO5azeDqHk5vFKZx9oFQ+SqwlHJA5YJt4O4wTGT+WT1bggPk6/6omEElWFEh2gtL1Pbwx1drY56XdkGVJJsezzWosZ19hXp/rt8FmQFvc5wR9HeFZFhYytZGFeMG4yKJMXuQPjHO/WEVsTA4lq/6TadiC7V2worH7s39iwO0jB5dcj6pr1cI9eD8ucdjRep0OXutPU5OFCN61AXF4CMH7pg/kAqsIOtUw3dq4loGYIiKG7ekfAjIrnk7WNI7T7qojHW3GsgJyM4=" #BINTRAY_KEY
 before_install:
-  - sudo git clone https://github.com/squawkcpp/avcpp.git /repo
-
+- sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
 script:
-  - sudo /bin/bash -c "cd /repo && /bin/bash build.sh $TRAVIS_BRANCH"
-
+- sudo /bin/bash -c "cd /avcpp && /bin/bash build.sh $BINTRAY_KEY $TRAVIS_BRANCH"
 deploy:
   provider: releases
   api_key:
-    secure: "PkcR+VgR0PzvGC+hc3SJPvUPjpV1juZAzMYOGi+Ez9Rgwuf06a5RAOHPnWwJ230ocEqGV6HQW/scufSZpahTpvB4e28nzoJSBcdmjWhNmy3NzENeseu6NgzhwJXtkfFYhMpoBTtT0E295CIvjY7PwvWG3oxhuzIfmMBHobKkGjJc8rQfGqhlzrYpja59luX4CqKVFasBRRGyeMaQ/zM6Ng9AKz23XwBUF7esyqwjPxbqFwrAgnn1ZL/PosCb2yb8GVuRl5/J0mSfLUxAeJ+T5z9Z4FLyeSWdzrKvNwFiOrPUAR/rC0hFqgYJOO7Bgf6wmF9uCLv6pfc/l/l9Y3FgERfDn8P3ijoixv9cQm8LkL2H1ysf0e+l/d0MlahZ2YMr5rZWKk29jZdBto7ceA0USXh4Ql+lsJHci4Yt9wm5RAZXn1fJKRMeahKIxwCuAIpDMGeTWnSmc42Y3meoAtIZNi8O481FGSo6n6xSOccMxqhnjZE+NGjvPOFSBZgy4Da0WnHZoSALFfDQGvExVEVPYTurltTlLNUUsPQk1W6qFPEMpDNZ0x77lIx0uhEWgj8gaIlHt00KhEAyUIWOAQm9WIqipyy/MmXN9SwdaQdwIxWBadGh4hft1zx6cBoyuBv51Bz5bdbldoKicrExMYqWmGveJdCzTFDCqmg3gC+HpEs="
-  file: '/repo/.build/squawk-avcpp_$TRAVIS_BRANCH.tar.gz'
+    secure: OO1+/n5AoT+vosctG/tgDcTL2myASDU1kimp1CMWu8jzfsfQjk6z9gDc3aVdn3BDOBm0rCis0BoOBmBRkWqD9Y/9eFHZ3DKADIUxOADIHhpKOfAmrd8p0vQRnDzHiz3bAlHd+mjsh53muCekd5SdRE1X2lxYdwXw/VJ6INQCIIu46fKaE7S9VGZFWIggSLNtW4ikMPCKVNoDztQq02Rstr7zNB8YJyKaxhmEwJs4VzVawq24bRRQtPZOyUJ+kwbE9P4zGcSXQBjk80hHCklKGqrgx4qBN+o89pK5eNFjuczjvyuyS9yx8ImOyW8hBg4GBiARifFcbm24CLH1ZDHWzFDNg/YXV601DFyBTylZMe8Xpz9rXModbNEjjtGfKhy7LVgR+hRwkXnX3iLXKc10WZMylPsPPRZ2lJ4UnS8BYfYswvAUbbTy9IDgcde1ukb606VOvXdBB7d57QCthAwTjrUCg1fKYyeAD9zw+n2mXHxN9tSayj4W2x4TbadtABTF4yJPX0go8KGh5X2W1lzmOuogG/xDHG2sswxvJz4X8wlhkIOfnWp4KzMD7TdO8XkOsGpFtohzO6RZzu2UzXZug3Nbd+yuyIR2sgNmgB2Ftrzwh6yD7zLPlIVLxjdVlZC9qUi9fm8IuOcyCUm4inc/VyrS+18wZzU5wgROaCYX2m8=
+  file: '/avcpp/.build/avcpp_$TRAVIS_BRANCH.tar.gz'
   skip_cleanup: true
   on:
     tags: true
     all_branches: true
     repo: squawkcpp/avcpp
-
-after_success:
-  - cd /repo
-  - sudo docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=squawk/avcpp
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - sudo docker build -f docker/Dockerfile --build-arg AVCPP_TAG_VERSION=$TRAVIS_BRANCH -t $REPO:$COMMIT .
-  - sudo docker tag $REPO:$COMMIT $REPO:$TAG
-  - sudo docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - sudo docker push $REPO
