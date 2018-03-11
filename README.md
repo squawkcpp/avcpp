@@ -1,7 +1,7 @@
 ## C++ wrapper for ffmpeg.
 
 [![Build Status](https://travis-ci.org/squawkcpp/avcpp.svg?branch=master)](https://travis-ci.org/squawkcpp/avcpp)
-[ ![Download](https://api.bintray.com/packages/squawkcpp/conan-cpp/lame%3Aconan-cpp/images/download.svg) ](https://bintray.com/squawkcpp/conan-cpp/lame%3Aconan-cpp)
+[ ![Download](https://api.bintray.com/packages/squawkcpp/conan-cpp/avcpp%3Aconan-cpp/images/download.svg) ](https://bintray.com/squawkcpp/conan-cpp/avcpp%3Aconan-cpp)
 
 C++ wrapper for the [ffmpeg](http://www.ffmpeg.org) multimedia library project.
 
